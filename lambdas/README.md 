@@ -1,0 +1,114 @@
+# 部署指南
+
+## 前置要求
+
+- AWS 账号和相关权限配置
+- AWS CLI 已安装和配置
+- Docker 已安装 (用于 csv2image Lambda)
+- Python 3.9+
+- Dify 账号和 API Token
+- Lark 机器人配置
+
+## 部署步骤
+
+### 1. AWS 资源准备
+
+1. 创建 S3 存储桶
+2. 创建 SQS 队列用于 Lambda 函数间通信
+3. 创建具有以下权限的 IAM 角色：
+   - Lambda 基础执行权限
+   - S3 读写权限
+   - SQS 发送和接收消息权限
+
+### 2. csv2image Lambda 部署
+
+1. 创建 ECR 仓库
+2. 使用提供的 Dockerfile 构建镜像
+3. 将镜像推送到 ECR
+4. 使用容器镜像创建 Lambda 函数
+5. 配置环境变量：
+   - BUCKET_NAME
+   - INPUT_PREFIX
+   - OUTPUT_PREFIX
+   - QUEUE_URL
+6. 配置 S3 触发器，监听指定前缀的文件上传事件
+
+### 3. metrics_analyzer Lambda 部署
+
+1. 创建 Python 部署包，包含以下依赖：
+   - boto3
+2. 创建 Lambda 函数，使用 Python 3.9 运行时
+3. 配置环境变量：
+   - DIFY_API_HOST
+   - DIFY_API_KEY
+   - LARK_WEBHOOK
+4. 配置 SQS 触发器
+
+### 4. 验证部署
+
+1. 上传测试 CSV 文件到 S3 触发处理流程
+2. 检查 CloudWatch 日志确认执行情况
+3. 验证 Lark 机器人消息推送
+
+## 监控和维护
+
+### CloudWatch 监控设置
+- 配置 Lambda 函数日志监控
+- 设置关键指标告警
+
+### 日常维护建议
+- 定期检查 Lambda 函数运行状态
+- 监控 S3 存储使用情况
+- 检查 SQS 消息处理情况
+
+## 故障排查指南
+
+### 常见问题
+1. Lambda 函数执行超时
+   - 检查内存配置
+   - 调整超时时间
+
+2. 图片生成失败
+   - 检查 S3 权限
+   - 验证 CSV 文件格式
+
+3. Dify API 调用失败
+   - 确认 API 配置
+   - 检查网络连接
+
+4. Lark 消息发送失败
+   - 验证 Webhook 配置
+   - 检查消息格式
+
+## 安全建议
+
+1. 定期轮换密钥
+2. 使用最小权限原则
+3. 启用 Lambda 函数 VPC 配置
+4. 定期更新依赖包
+5. 监控异常访问行为
+
+## 配置示例
+
+### Lambda 环境变量
+```env
+# csv2image Lambda
+BUCKET_NAME=your-bucket
+INPUT_PREFIX=data/
+OUTPUT_PREFIX=plots/
+QUEUE_URL=your-sqs-url
+
+### metrics_analyzer Lambda
+DIFY_API_HOST=your-dify-host
+DIFY_API_KEY=your-dify-key
+LARK_WEBHOOK=your-webhook-url
+
+###Lambda 配置建议
+csv2image Lambda
+内存: 1024MB
+超时: 5分钟
+并发: 5-10
+metrics_analyzer Lambda
+内存: 256MB
+超时: 5分钟
+并发: 3-5

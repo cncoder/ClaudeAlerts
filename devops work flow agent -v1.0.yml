@@ -1,0 +1,676 @@
+app:
+  description: devops agent
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: devops agent
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1735745548489-source-1735747141793-target
+      source: '1735745548489'
+      sourceHandle: source
+      target: '1735747141793'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1735747141793-true-1735745580999-target
+      source: '1735747141793'
+      sourceHandle: 'true'
+      target: '1735745580999'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1735747141793-c737405f-583a-4129-9eb3-89042d41ef1d-1735747324932-target
+      source: '1735747141793'
+      sourceHandle: c737405f-583a-4129-9eb3-89042d41ef1d
+      target: '1735747324932'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: end
+      id: 1735747141793-false-1735747411294-target
+      source: '1735747141793'
+      sourceHandle: 'false'
+      target: '1735747411294'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1735747141793-432996c3-4736-4db4-a3b0-b56eb055e34a-17357478492320-target
+      source: '1735747141793'
+      sourceHandle: 432996c3-4736-4db4-a3b0-b56eb055e34a
+      target: '17357478492320'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1736363864947-source-1735745681978-target
+      source: '1736363864947'
+      sourceHandle: source
+      target: '1735745681978'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 1735745580999-source-1736364437459-target
+      source: '1735745580999'
+      sourceHandle: source
+      target: '1736364437459'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: end
+      id: 1736364437459-true-1736364579360-target
+      source: '1736364437459'
+      sourceHandle: 'true'
+      target: '1736364579360'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1736364437459-false-1736363864947-target
+      source: '1736364437459'
+      sourceHandle: 'false'
+      target: '1736363864947'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1735747324932-source-1736367125775-target
+      source: '1735747324932'
+      sourceHandle: source
+      target: '1736367125775'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 17357478492320-source-1736367140710-target
+      source: '17357478492320'
+      sourceHandle: source
+      target: '1736367140710'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: cpu
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: cpu
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: network
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: network
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: memory
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: memory
+        - label: request
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: request
+      height: 168
+      id: '1735745548489'
+      position:
+        x: 30
+        y: 311
+      positionAbsolute:
+        x: 30
+        y: 311
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: cpu
+        model:
+          completion_params:
+            temperature: 0.6
+          mode: chat
+          name: anthropic.claude-3-5-sonnet-20241022-v2:0
+          provider: bedrock
+        prompt_template:
+        - id: cf7f99e7-52d4-41bd-80ff-26c50d98e61d
+          role: system
+          text: "你是一位拥有丰富运维经验的 SRE 专家，特别擅长容器以及微服务中的日志和性能分析。请按照以下步骤仔细分析所提供的交易所业务的 EKS\
+            \ 集群中同一 Service 下不同 Pod 的 CPU 使用率监控折线图，重点关注：\n    1. 对比不同 Pod 之间的负载差异，如果有\
+            \ Pod 与其他 Pod 有明显不同的 CPU 使用模式则视作异常Pod\n    2. 缺乏正常负载波动特征的 Pod 如死平，持续高于或者低于基准水平等情况也视作异常Pod\
+            \ \n    3. 结合纵轴数值范围，要注意所有明显偏离基准负载水平的 pod，折线图中如果有的 Pod 均线明显偏离大部分 Pod，都视作异常\
+            \ Pod\n    3. 忽略CPU使用率瞬间异常峰值或谷值，因为行情会带来突然的异常流量，而且这有对应的监控告警\n    4. 即使CPU使用率接近基准水平，出现以下情况也视为异常：波动频率持续的明显异于其他pods，持续的缺乏其他pods具有的规律性特征\n\
+            \    5. 分析准确性至关重要，正确识别异常 Pod 将获得奖励，误报将会倒扣工资和降级。得出结论前，务必仔细检查识别的异常 Pod \n\
+            \    6. 返回异常Pod名称，如果没有异常的pod则返回没有\n\n输出要求：\n1. 只返回异常Pod名称(包含完整IP:端口):\
+            \ 使用XML格式\n2. 无异常时返回\"无异常\"\n3. 不要包含任何解释、原因或建议\n\n输出格式规范：\n必须使用标准XML格式输出，包含以下固定结构：\n\
+            \n<result>\n    <pod1>pod-name-ip1:port</pod1>\n    <pod2>pod-name-ip2:port</pod2>\n\
+            </result>\n\n或\n\n<result>\n无异常\n</result>\n\n"
+        selected: false
+        title: cpu检测
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1735745548489'
+            - cpu
+          enabled: true
+      height: 126
+      id: '1735745580999'
+      position:
+        x: 638
+        y: 311
+      positionAbsolute:
+        x: 638
+        y: 311
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735745580999'
+          - text
+          variable: result
+        - value_selector:
+          - '1736363864947'
+          - text
+          variable: x
+        selected: false
+        title: 结束
+        type: end
+      height: 116
+      id: '1735745681978'
+      position:
+        x: 1565.7142857142858
+        y: 417.00000000000006
+      positionAbsolute:
+        x: 1565.7142857142858
+        y: 417.00000000000006
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: 5c1049ee-53ee-4767-9330-507218d280e6
+            value: ''
+            varType: file
+            variable_selector:
+            - '1735745548489'
+            - cpu
+          id: 'true'
+          logical_operator: and
+        - case_id: c737405f-583a-4129-9eb3-89042d41ef1d
+          conditions:
+          - comparison_operator: exists
+            id: f60b8980-47f1-4356-b0a5-aeb71775750d
+            value: ''
+            varType: file
+            variable_selector:
+            - '1735745548489'
+            - network
+          id: c737405f-583a-4129-9eb3-89042d41ef1d
+          logical_operator: and
+        - case_id: 432996c3-4736-4db4-a3b0-b56eb055e34a
+          conditions:
+          - comparison_operator: exists
+            id: 86dd5044-15a9-4d67-aa42-f74dd57d9bee
+            value: ''
+            varType: file
+            variable_selector:
+            - '1735745548489'
+            - memory
+          id: 432996c3-4736-4db4-a3b0-b56eb055e34a
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 222
+      id: '1735747141793'
+      position:
+        x: 334
+        y: 311
+      positionAbsolute:
+        x: 334
+        y: 311
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: anthropic.claude-3-sonnet-20240229-v1:0
+          provider: bedrock
+        prompt_template:
+        - id: c0e4d68c-eb3e-4d8b-8a22-747b331e195a
+          role: system
+          text: '你是一位拥有丰富运维经验的 SRE 专家，特别擅长容器以及微服务中的日志和性能分析。请按照以下步骤仔细分析所提供的交易所业务的 EKS
+            集群中同一 Service 下不同 Pod 的网络使用情况监控折线图，重点关注：
+
+
+            1. 对比不同 Pod 之间的网络流量差异，如果有 Pod 与其他 Pod 有明显不同的网络使用模式则视作异常Pod
+
+            2. 缺乏正常网络流量波动特征的 Pod(如长期无流量、流量异常平稳)视作异常Pod
+
+            3. 结合纵轴数值范围，要注意所有明显偏离基准流量水平的 Pod，如果有的 Pod 网络使用量明显高于或低于大多数 Pod，都视作异常 Pod
+
+            4. 忽略网络流量的瞬时峰值，因为行情会带来突发流量，而且这有对应的监控告警
+
+            5. 即使网络使用量接近基准水平，出现以下情况也视为异常：网络连接模式异常、持续的网络延迟、异常的丢包率
+
+            6. 分析准确性至关重要，正确识别异常 Pod 将获得奖励，误报将会倒扣工资和降级。得出结论前，务必仔细检查识别的异常 Pod
+
+
+            输出要求：
+
+            1. 只返回异常Pod名称(包含完整IP:端口): 使用XML格式
+
+            2. 无异常时返回"无异常"
+
+            3. 不要包含任何解释、原因或建议
+
+
+            输出格式规范：
+
+            必须使用标准XML格式输出，包含以下固定结构：
+
+
+            <result>
+
+                <pod1>pod-name-ip1:port</pod1>
+
+                <pod2>pod-name-ip2:port</pod2>
+
+            </result>
+
+
+            或
+
+
+            <result>
+
+            无异常
+
+            </result>
+
+            '
+        selected: false
+        title: 网络检测
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1735745548489'
+            - network
+          enabled: true
+      height: 98
+      id: '1735747324932'
+      position:
+        x: 638
+        y: 477
+      positionAbsolute:
+        x: 638
+        y: 477
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs: []
+        selected: false
+        title: 结束 空
+        type: end
+      height: 54
+      id: '1735747411294'
+      position:
+        x: 638
+        y: 772.1428571428571
+      positionAbsolute:
+        x: 638
+        y: 772.1428571428571
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: anthropic.claude-3-sonnet-20240229-v1:0
+          provider: bedrock
+        prompt_template:
+        - id: c0e4d68c-eb3e-4d8b-8a22-747b331e195a
+          role: system
+          text: "你是一位拥有丰富运维经验的 SRE 专家，特别擅长容器以及微服务中的日志和性能分析。请按照以下步骤仔细分析所提供的交易所业务的 EKS\
+            \ 集群中同一 Service 下不同 Pod 的内存使用情况监控折线图，重点关注：\n\n1. 对比不同 Pod 之间的内存使用差异，如果有\
+            \ Pod 与其他 Pod 有明显不同的内存使用模式则视作异常Pod\n2. 以下情况视作异常Pod：\n   - 内存使用持续上升且无下降趋势(可能的内存泄漏)\n\
+            \   - 内存使用率异常平稳(可能的内存限制问题)\n   - 频繁的内存波动(可能的GC问题)\n3. 结合纵轴数值范围，要注意所有明显偏离基准内存水平的\
+            \ Pod，如果有的 Pod 内存使用量明显高于或低于大多数 Pod，都视作异常 Pod\n4. 忽略内存使用的瞬时波动，主要关注持续性的异常趋势\n\
+            5. 即使内存使用量接近基准水平，出现以下情况也视为异常：\n   - 异常的GC频率\n   - 内存碎片化迹象\n   - 内存分配模式异常\n\
+            6. 分析准确性至关重要，正确识别异常 Pod 将获得奖励，误报将会倒扣工资和降级。得出结论前，务必仔细检查识别的异常 Pod\n\n输出要求：\n\
+            1. 只返回异常Pod名称(包含完整IP:端口): 使用XML格式\n2. 无异常时返回\"无异常\"\n3. 不要包含任何解释、原因或建议\n\
+            \n输出格式规范：\n必须使用标准XML格式输出，包含以下固定结构：\n\n<result>\n    <pod1>pod-name-ip1:port</pod1>\n\
+                <pod2>pod-name-ip2:port</pod2>\n</result>\n\n或\n\n<result>\n无异常\n\
+            </result>\n"
+        selected: false
+        title: 内存检测
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1735745548489'
+            - memory
+          enabled: true
+      height: 98
+      id: '17357478492320'
+      position:
+        x: 638
+        y: 633.2857142857143
+      positionAbsolute:
+        x: 638
+        y: 633.2857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.6
+          mode: chat
+          name: anthropic.claude-3-5-sonnet-20241022-v2:0
+          provider: bedrock
+        prompt_template:
+        - id: 4cbd6e21-489a-4664-9a1e-5e4d01d9aa7e
+          role: system
+          text: "你是一位拥有丰富加密货币交易平台运维经验的 SRE 专家，需要对已识别的异常Pod进行准确度的二次确认和深入分析，请注意只关注已识别出的异常Pod列表中的每一个异常Pod，而且都需要进行分析，给出分析结果，不能遗漏。你将获得两个输入：\n\
+            1. EKS集群中Pod的CPU使用率监控折线图\n2. 已识别出的异常Pod列表：\n\n{{#1735745580999.text#}}\n\
+            \n请进行深入分析并确认：\n1. 对每个异常Pod进行置信度评估\n2. 分析可能的原因及概率\n3. 给出具体的排查和处理建议\n\n\
+            必须使用以下XML格式输出：\n\n<analysis>\n    <anomaly_pods>\n        <pod>\n    \
+            \        <name>pod完整名称包含IP</name>\n            <confidence>确定异常/高度疑似/可能异常/轻度疑似/待确认</confidence>\n\
+            \            <priority>优先级[高/中/低]</priority>\n            <probable_cause>最可能的原因:概率%</probable_cause>\n\
+            \            <action>建议执行的具体操作</action>\n            <command>建议执行的查看命令：kubectl\
+            \ xxx 或其他具体命令</command>\n            <investigation>关键排查步骤</investigation>\n\
+            \        </pod>\n        <!-- 必须包含所有异常pod -->\n    </anomaly_pods>\n \
+            \   \n    <summary>\n        <total_pods>异常Pod总数</total_pods>\n      \
+            \  <risk_level>严重/高危/中危/低危</risk_level>\n        <urgent_actions>需要紧急关注的事项</urgent_actions>\n\
+            \    </summary>\n</analysis>"
+        selected: false
+        title: 总结和分析
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1735745548489'
+            - cpu
+          enabled: true
+      height: 98
+      id: '1736363864947'
+      position:
+        x: 1251.7142857142858
+        y: 417.00000000000006
+      positionAbsolute:
+        x: 1251.7142857142858
+        y: 417.00000000000006
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: b3d699a2-f0b9-41d4-adb3-42d1df12ec26
+            value: 无异常
+            varType: string
+            variable_selector:
+            - '1735745580999'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 126
+      id: '1736364437459'
+      position:
+        x: 942
+        y: 311
+      positionAbsolute:
+        x: 942
+        y: 311
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735745580999'
+          - text
+          variable: result
+        selected: false
+        title: 无异常结束
+        type: end
+      height: 90
+      id: '1736364579360'
+      position:
+        x: 1246
+        y: 180.71428571428572
+      positionAbsolute:
+        x: 1246
+        y: 180.71428571428572
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735747324932'
+          - text
+          variable: result
+        selected: false
+        title: 网络检测结论
+        type: end
+      height: 90
+      id: '1736367125775'
+      position:
+        x: 982.8571428571429
+        y: 515.7142857142858
+      positionAbsolute:
+        x: 982.8571428571429
+        y: 515.7142857142858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '17357478492320'
+          - text
+          variable: result
+        selected: false
+        title: 内存检测结论
+        type: end
+      height: 90
+      id: '1736367140710'
+      position:
+        x: 994.2857142857143
+        y: 677.1428571428572
+      positionAbsolute:
+        x: 994.2857142857143
+        y: 677.1428571428572
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 22.61455761604293
+      y: 41.99547054677828
+      zoom: 0.6539628036647458
