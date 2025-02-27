@@ -11,6 +11,12 @@
 
 BedrockWatch 是一个基于 AWS Bedrock Claude 3.5 和 Dify 构建的智能监控预警系统。它能够实时分析系统指标，提供精准的异常检测和智能告警，帮助运维团队快速发现和解决问题。
 
+系统使用 Dify Flow 工作流进行编排，主要包含以下组件：
+CPU 性能分析模块
+其他组件正在完善PE
+
+快速体验的方式：下载 devops work flow agent -v1.0.yml 并导入dify
+
 ## ✨ 核心特性
 
 - 🎯 超高准确度 - 基于 Claude 3.5 的智能分析，准确识别异常
