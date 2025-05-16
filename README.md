@@ -74,7 +74,7 @@ graph LR
 
 1. **克隆代码仓库**
 ```bash
-git clone [https://github.com/your-username/BedrockWatch.git](https://github.com/cncoder/ClaudeAlerts.git)
+git clone https://github.com/cncoder/ClaudeAlerts.git
 cd BedrockWatch
 ```
 
